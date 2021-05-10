@@ -1,84 +1,53 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {FormControl, FormControlLabel, FormGroup, FormLabel, Checkbox} from '@material-ui/core';
 import UserContext from '../context/user_context';
+import {roleRef} from '../data/user_data';
 
 const AccessGroups = () => {
-
+    
     const [selAccessGroups, setSelAccessGroup] = useState([])
 
-    const accessRef = {
-        apple: {
-            subscriptions: ["apple-s1", "apple-s2"],
-            tags: ["NonCitrus"]
-        },
-        pear: {
-            subscriptions: ["pear-s1", "pear-s2"],
-            tags: ["NonCitrus", "CustomView1"]
-        },
-        "NonCitrus-site": {
-            subscriptions: ["NonCitrus-s1", "NonCitrus-s2"],
-            tags: ["NonCitrus"]
-        },
-        "Citrus-site": {
-            subscriptions: ["Citrus-s1", "Citrus-s2"],
-            tags: ["Citrus"]
-        },
-        orange: {
-            subscriptions: ["orange-s1", "orange-s2", "orange-s3"],
-            tags: ["Citrus", "CustomView1"]
-        },
-        lemon: {
-            subscriptions: ["lemon-s1", "lemon-s2"],
-            tags: ["Citrus", "CustomView1"]
-        },
-        lime: {
-            subscriptions: ["lime-s1"],
-            tags: ["Citrus"]
-        }
-    }
-
     const user = useContext(UserContext);
-
+    console.log(user)
     useEffect(() => {
-        user.setData(prevState => ({...prevState, subscriptions: accessRef[user.data.role]}))
+        user.setData(prevState => ({...prevState, accessGroups: Object.fromEntries(roleRef[user.data.role].map(i => [i, true]))}))
     }, [user.data.role])
 
     useEffect(() => {
         getSelectedAccessGroups()
-    }, [user.data.subscriptions])
+    }, [user.data.accessGroups])
 
     const handleChange = (event) => {
-        user.setData(prevState => ({...prevState, subscriptions: {...prevState.subscriptions, [event.target.name]: event.target.checked}}))
+        user.setData(prevState => ({...prevState, accessGroups: {...prevState.accessGroups, [event.target.name]: event.target.checked}}))
     }
 
     const getAccessGroups = () => {
         if (user.data.role) {        
-            let subList = Object.keys(accessRef[user.data.role]).map(sub => 
+            return roleRef[user.data.role].map(accGrp => 
             <FormControlLabel 
-                control={<Checkbox checked={user.data.subscriptions[sub] ? user.data.subscriptions[sub]: false} onChange={handleChange} name={sub}/>}
-                label={sub}
-                key={sub}
+                control={<Checkbox checked={user.data.accessGroups[accGrp] ? user.data.accessGroups[accGrp]: false} onChange={handleChange} name={accGrp}/>}
+                label={accGrp}
+                key={accGrp}
             />
             )
-            return subList;
         }
     }
 
     const getSelectedAccessGroups = () => {
-        if (user.data.subscriptions) {
-            setSelAccessGroup(Object.keys(user.data.subscriptions).filter(sub=>user.data.subscriptions[sub]))
+        if (user.data.accessGroups) {
+            setSelAccessGroup(Object.keys(user.data.accessGroups).filter(accGrp=>user.data.accessGroups[accGrp]))
         }
     }
 
     return (
         <React.Fragment>
             <FormControl>
-                <FormLabel>Subscriptions</FormLabel>
+                <FormLabel>Access Groups</FormLabel>
                 <FormGroup>
                     {getAccessGroups()}
                 </FormGroup>
             </FormControl>
-            <p>Selected Subscriptions: {selAccessGroups}</p>
+            <p>Selected Access Groups: {selAccessGroups}</p>
         </React.Fragment>
     )
 }

@@ -2,16 +2,20 @@ import React, {useState} from 'react';
 
 const UserContext = React.createContext({
     data: {
-        role: "Boss",
-        subscriptions: {
-            sub_1: true, 
-            sub_2: true,
-            sub_3: true
+        role: "shopkeeper",
+        accessGroups: {
+            "apple": true, 
+            "pear": true, 
+            "NonCitrus-Site": true, 
+            "Citrus-Site": true, 
+            "orange": true, 
+            "lemon": true, 
+            "lime": true
         },
         tags: {
-            tag_1: false,
-            tag_2: false,
-            tag_3: false
+            "Citrus": false,
+            "NonCitrus": false,
+            "CustomView1": false
         }
     },
     setData: () => {}
@@ -20,16 +24,20 @@ const UserContext = React.createContext({
 export const UserContextProvider = (props) => {
 
     const [data, setData] = useState({
-        role: "Boss",
-        subscriptions: {
-            sub_1: true, 
-            sub_2: true,
-            sub_3: true
+        role: "shopkeeper",
+        accessGroups: {
+            "apple": true, 
+            "pear": true, 
+            "NonCitrus-Site": true, 
+            "Citrus-Site": true, 
+            "orange": true, 
+            "lemon": true, 
+            "lime": true
         },
         tags: {
-            tag_1: false,
-            tag_2: false,
-            tag_3: false
+            "Citrus": false,
+            "NonCitrus": false,
+            "CustomView1": false
         }
     })
 

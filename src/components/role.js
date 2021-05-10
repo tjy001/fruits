@@ -1,10 +1,9 @@
 import React, {useContext} from 'react';
 import {FormControl, Select, InputLabel, MenuItem} from '@material-ui/core';
 import UserContext from '../context/user_context';
+import {roleRef} from '../data/user_data';
 
 const Role = () => {
-
-    const roles = ["NonCitrus-CIO", "apple-Analyst", "lemon-Analyst", "citrus-Analyst", "shopkeeper"]
 
     const user = useContext(UserContext)
 
@@ -19,7 +18,7 @@ const Role = () => {
                 <Select defaultValue="shopkeeper"
                     value={user.data.role ? user.data.role : "shopkeeper"}
                     onChange={handleChange}>
-                    {roles.map(role => 
+                    {Object.keys(roleRef).map(role => 
                         <MenuItem value={role} key={role}>{role}</MenuItem>
                         )
                     }
