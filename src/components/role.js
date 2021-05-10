@@ -4,6 +4,8 @@ import UserContext from '../context/user_context';
 
 const Role = () => {
 
+    const roles = ["NonCitrus-CIO", "apple-Analyst", "lemon-Analyst", "citrus-Analyst", "shopkeeper"]
+
     const user = useContext(UserContext)
 
     const handleChange = (event) => {
@@ -14,11 +16,13 @@ const Role = () => {
         <React.Fragment>
             <FormControl>
                 <InputLabel id="test">Role</InputLabel>
-                <Select defaultValue="Boss"
-                    value={user.data.role ? user.data.role : "Boss"}
+                <Select defaultValue="shopkeeper"
+                    value={user.data.role ? user.data.role : "shopkeeper"}
                     onChange={handleChange}>
-                    <MenuItem value="Boss">Boss</MenuItem>
-                    <MenuItem value="Slave">Slave</MenuItem>
+                    {roles.map(role => 
+                        <MenuItem value={role} key={role}>{role}</MenuItem>
+                        )
+                    }
                 </Select>
             </FormControl>
             <p>Current Role: {user.data.role}</p>
