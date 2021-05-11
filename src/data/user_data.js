@@ -49,12 +49,20 @@ export const accessRef = {
     }
 }
 
+export const roleTagRef = {
+    "NonCitrus-CIO": ["NonCitrus", "CustomView1"],
+    "apple-Analyst": ["NonCitrus"],
+    "lemon-Analyst": ["Citrus", "CustomView1"],
+    "citrus-Analyst": ["Citrus", "CustomView1"],
+    "shopkeeper": ["Citrus", "NonCitrus", "CustomView1"]
+}
+
 export const roleRef = {
-    "NonCitrus-CIO": ["apple", "pear", "NonCitrus-Site"],
+    "NonCitrus-CIO": ["apple", "pear", "NonCitrus-site"],
     "apple-Analyst": ["apple"],
     "lemon-Analyst": ["lemon"],
     "citrus-Analyst": ["orange", "lemon", "lime"],
-    "shopkeeper": ["apple", "pear", "NonCitrus-Site", "Citrus-Site", "orange", "lemon", "lime"]
+    "shopkeeper": ["apple", "pear", "NonCitrus-site", "Citrus-site", "orange", "lemon", "lime"]
 }
 
 export const userRef = {
@@ -66,7 +74,7 @@ export const userRef = {
 }
 
 export const tagRef = {
-    "Citrus": ["Citrus-Site", "orange", "lemon", "lime"],
-    "NonCitrus": ["apple", "pear", "NonCitrus-Site"],
+    "Citrus": ["Citrus-site", "orange", "lemon", "lime"],
+    "NonCitrus": ["apple", "pear", "NonCitrus-site"],
     "CustomView1": ["pear", "orange", "lemon"]
 }

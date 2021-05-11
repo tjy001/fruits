@@ -20,7 +20,11 @@ const Data = () => {
 
     const getTagSubs = () => {
         let tags = Object.keys(user.data.tags).filter(key => user.data.tags[key])
-        return tags.map(tag => [tag, sumArr(_.intersection(tagRef[tag], Object.keys(user.data.accessGroups)).map(accGrp => getAccGrpVal(accGrp)))])
+        let tagsubs = []
+        if (tags.length > 0) {
+            tagsubs = tags.map(tag => [tag, sumArr(_.intersection(tagRef[tag], Object.keys(user.data.accessGroups)).map(accGrp => getAccGrpVal(accGrp)))])
+        }
+        return tagsubs
     }
 
     const getSubs = () => {
@@ -44,6 +48,7 @@ const Data = () => {
 
     return (
         <React.Fragment>
+            <p>Values: </p>
             <div>{values}</div>
             <div>{tagVal}</div>
         </React.Fragment>

@@ -8,7 +8,6 @@ const AccessGroups = () => {
     const [selAccessGroups, setSelAccessGroup] = useState([])
 
     const user = useContext(UserContext);
-    console.log(user)
     useEffect(() => {
         user.setData(prevState => ({...prevState, accessGroups: Object.fromEntries(roleRef[user.data.role].map(i => [i, true]))}))
     }, [user.data.role])

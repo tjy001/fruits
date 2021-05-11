@@ -6,8 +6,8 @@ const UserContext = React.createContext({
         accessGroups: {
             "apple": true, 
             "pear": true, 
-            "NonCitrus-Site": true, 
-            "Citrus-Site": true, 
+            "NonCitrus-site": true, 
+            "Citrus-site": true, 
             "orange": true, 
             "lemon": true, 
             "lime": true
@@ -28,8 +28,8 @@ export const UserContextProvider = (props) => {
         accessGroups: {
             "apple": true, 
             "pear": true, 
-            "NonCitrus-Site": true, 
-            "Citrus-Site": true, 
+            "NonCitrus-site": true, 
+            "Citrus-site": true, 
             "orange": true, 
             "lemon": true, 
             "lime": true
