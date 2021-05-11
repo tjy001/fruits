@@ -53,7 +53,6 @@ const Tags = () => {
                     {getTags()}
                 </FormGroup>
             </FormControl>
-            <p>Selected Tags: {getSelTags()}</p>
         </React.Fragment>
     )
 }

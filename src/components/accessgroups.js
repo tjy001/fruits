@@ -46,7 +46,6 @@ const AccessGroups = () => {
                     {getAccessGroups()}
                 </FormGroup>
             </FormControl>
-            <p>Selected Access Groups: {selAccessGroups}</p>
         </React.Fragment>
     )
 }
