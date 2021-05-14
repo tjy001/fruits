@@ -89,6 +89,7 @@ const Data = () => {
 
     useEffect(() => {
         getData()
+        console.log("im on development!")
     }, [user.data])
 
     return (
