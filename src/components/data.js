@@ -89,7 +89,6 @@ const Data = () => {
 
     useEffect(() => {
         getData()
-        console.log(options)
     }, [user.data])
 
     return (
